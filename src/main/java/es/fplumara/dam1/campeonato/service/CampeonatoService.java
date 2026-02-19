@@ -13,7 +13,15 @@ public class CampeonatoService {
         this.resultadoRepository = resultadoRepository;
     }
     public void registrarDeportista(Deportista d){
-
+        if (d == null ||
+                d.getId() == null || d.getId().trim().isEmpty() ||
+                d.getNombre() == null || d.getNombre().trim().isEmpty() ||
+                d.getPais() == null || d.getPais().trim().isEmpty()){
+            throw new IllegalArgumentException("Datos Invalidos");
+        }
+       if (deportistaRepository.findById(d.getId()).isPresent()){
+           throw new Dupli
+       }
     }
 
 
